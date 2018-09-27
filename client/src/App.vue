@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <QueryBox/>
-    <Cytoscape msg="Welcome to Your Vue.js App"/>
+    <Cytoscape elements="elements"/>
   </div>
 </template>
 
@@ -11,6 +11,11 @@ import QueryBox from './components/QueryBox.vue'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      elements: []
+    }
+  },
   components: {
     Cytoscape,
     QueryBox

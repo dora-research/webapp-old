@@ -8,24 +8,26 @@ import cytoscape from 'cytoscape'
 export default {
   name: 'Cytoscape',
   props: {
-    msg: String
+    elements: Array
   },
   mounted () {
     cytoscape({
 
       container: this.$refs.cy, // container to render in
 
-      elements: [ // list of graph elements to start with
-        { // node a
-          data: { id: 'a' }
-        },
-        { // node b
-          data: { id: 'b' }
-        },
-        { // edge ab
-          data: { id: 'ab', source: 'a', target: 'b' }
-        }
-      ],
+      elements: this.elements,
+
+      // elements: [ // list of graph elements to start with
+      //   { // node a
+      //     data: { id: 'a' }
+      //   },
+      //   { // node b
+      //     data: { id: 'b' }
+      //   },
+      //   { // edge ab
+      //     data: { id: 'ab', source: 'a', target: 'b' }
+      //   }
+      // ],
 
       style: [ // the stylesheet for the graph
         {
