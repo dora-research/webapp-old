@@ -4,7 +4,7 @@ const router = express.Router()
 const config = require('../config')
 
 const Database = require('arangojs').Database
-const db = new Database('http://localhost:8529')
+const db = new Database(config.url)
 db.useDatabase(config.db)
 db.useBasicAuth(config.username, config.password)
 
