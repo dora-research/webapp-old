@@ -8,7 +8,14 @@ import cytoscape from 'cytoscape'
 export default {
   name: 'Cytoscape',
   props: {
-    elements: Array
+    nodes: {
+      type: Array,
+      required: true
+    },
+    edges: {
+      type: Array,
+      required: true
+    }
   },
   mounted () {
     cytoscape({
@@ -53,6 +60,11 @@ export default {
         rows: 1
       }
     })
+  },
+  computed: {
+    elements () {
+      return this.nodes.concat(this.edges)
+    }
   }
 }
 </script>

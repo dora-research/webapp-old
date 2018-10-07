@@ -1,7 +1,7 @@
 <template>
   <form @submit="onSubmit">
-    <textarea id="qb" v-model="qs" rows="10" required></textarea>
-    <input type="submit"/>
+    <textarea id="qb" v-model="qs" rows="6" required></textarea>
+    <input type="submit" />
   </form>
 </template>
 
@@ -10,21 +10,27 @@ import axios from 'axios'
 
 export default {
   name: 'QueryBox',
+  props: {
+    default: String
+  },
   data () {
     return {
-      qs: 'asd'
+      qs: this.default     
     }
   },
   methods: {
     onSubmit (e) {
       e.preventDefault()
+      console.log(this.edgeField)
       console.log(this.qs)
-      // TODO: send qs to backend for processing
-
-      axios.post('/query', { qs: this.qs })
+      
+      axios.post('/query', {
+        qs: this.qs,
+        edgeField: this.edgeField
+      })
       .then(res => {
         console.log(res)
-        this.$emit('queryResult', res)
+        this.$emit('result', res)
       })
       .catch(err => {
         console.log(err)
